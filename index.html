@@ -37,15 +37,27 @@
                         <option value="0_6_dager">0-6 dager siden</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <label for="divisjon">Divisjon:</label>
-                    <select id="divisjon" name="divisjon">
-                        <option value="alle">Alle divisjoner</option>
-                        <option value="it">IT</option>
-                        <option value="innsats">Innsats</option>
-                        <option value="brukerdialog">Brukerdialog</option>
-                    </select>
+
+                <!-- Divisjon og Avdeling i en felles container -->
+                <div class="filter-group duo-filters">
+                    <div class="half-width">
+                        <label for="divisjon">Divisjon:</label>
+                        <select id="divisjon" name="divisjon">
+                            <option value="alt" selected>Alle divisjoner</option>
+                            <option value="it">IT</option>
+                            <option value="innsats">Innsats</option>
+                            <option value="brukerdialog">Brukerdialog</option>
+                        </select>
+                    </div>
+                    <div class="half-width">
+                        <label for="avdeling">Avdeling:</label>
+                        <select id="avdeling" name="avdeling" disabled>
+                            <option value="alt" selected>Velg divisjon først...</option>
+                        </select>
+                    </div>
                 </div>
+                <!-- Slutt -->
+
                 <div class="filter-group">
                     <label for="type-oppgave">Type oppgave:</label>
                     <select id="type-oppgave" name="type-oppgave">
@@ -111,6 +123,52 @@
         </script>
         
 
+
+
+
+        <script>
+            // Funksjon for å oppdatere "Avdeling" basert på valgt "Divisjon"
+            function oppdaterAvdeling() {
+                var divisjon = document.getElementById('divisjon').value;
+                var avdeling = document.getElementById('avdeling');
+                var avdelinger = {
+                    'it': ['A', 'B', 'C'],
+                    'innsats': ['D', 'E'],
+                    'brukerdialog': ['F', 'G', 'H', 'I']
+                };
+            
+                // Fjern eksisterende alternativer
+                avdeling.innerHTML = '';
+            
+                // Legg til standard "Velg..." alternativ
+                var defaultOption = document.createElement('option');
+                defaultOption.value = 'alt';
+                defaultOption.textContent = 'Alle avdelinger';
+                avdeling.appendChild(defaultOption);
+            
+                // Aktiver eller deaktiver "Avdeling" basert på valg i "Divisjon"
+                if (divisjon === 'alt') {
+                    avdeling.disabled = true;
+                    defaultOption.textContent = 'Velg divisjon først...';
+                } else {
+                    avdeling.disabled = false;
+                    // Legg til nye alternativer basert på valgt divisjon
+                    avdelinger[divisjon].forEach(function(avd) {
+                        var option = document.createElement('option');
+                        option.value = avd.toLowerCase();
+                        option.textContent = avd;
+                        avdeling.appendChild(option);
+                    });
+                }
+            }
+            
+            // Legg til eventlistener for endring i "Divisjon"
+            document.getElementById('divisjon').addEventListener('change', oppdaterAvdeling);
+            
+            // Kjør funksjonen ved lasting av siden for å sette opp standardtilstand
+            document.addEventListener('DOMContentLoaded', oppdaterAvdeling);
+            </script>
+            
 
 
 

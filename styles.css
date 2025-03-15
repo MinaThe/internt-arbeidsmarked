@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Lys grå bakgrunn for resten av siden */
+    background-color: #f5f5f5; /* Lys grå bakgrunn for resten av siden */
 }
 
 /* Stil for header-seksjonen */
@@ -17,13 +17,13 @@ header {
 header h1 {
     font-size: 20px;
     margin: 0;
-    color: #ffffff; /* Hvit tekstfarge */
+    color: #000000; /* Hvit tekstfarge */
 }
 
 /* Stil for beskrivelsen */
 header p {
     font-size: 15px;
-    color: #ffffff; /* Hvit tekstfarge */
+    color: #1a1a1a; /* Hvit tekstfarge */
 }
 
 
@@ -41,7 +41,7 @@ header p {
     width: 500px;
     padding: 10px;
     font-size: 14px;
-    border: 2px solid #ccc;
+    border: 2px solid #cccccc;
     border-radius: 20px 0 0 20px;
     outline: none;
 }
@@ -72,7 +72,7 @@ header p {
 
 /* Stil for kollapsbar knapp */
 .collapsible {
-    background-color: #000000;
+    background-color: #7dc1de;
     color: white;
     padding: 10px;
     width: 100%;
@@ -123,8 +123,25 @@ header p {
     border-radius: 5px;
     width: 100%;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 #apply-filters:hover {
     background-color: #45a049;
+}
+
+/* Stil for duo-filters container */
+.duo-filters {
+    display: flex;
+    gap: 4%;
+}
+
+/* Stil for halvparten-bredde elementer */
+.half-width {
+    width: 48%;
+}
+
+/* Fjern høyre marg for siste element i duo-filters */
+.duo-filters .half-width:last-child {
+    margin-right: 0;
 }
