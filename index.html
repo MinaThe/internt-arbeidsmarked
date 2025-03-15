@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nb-NO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERNT OPPGAVEMARKED</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>INTERNT OPPGAVEMARKED</h1>
+        <p>På denne siden oppfordres prosjektledere og ansvarlige analytikere til å legge ut prosjekter, oppdrag, eller andre oppgaver. Ansatte kan få oversikt og kan melde sin interesse</p>
+    </header>
+
+
+    <section class="search-container">
+        <input type="text" id="search" placeholder="Søk etter oppgaver ...">
+        <button id="search-btn">
+            <img src="images/search_icon.png" alt="Søk" id="search-icon">
+        </button>
+    </section>
+
+
+
+    <section class="filter-container">
+        <button class="collapsible">Filtrer oppgaver</button>
+        <div class="content">
+            <form id="filter-form">
+                <div class="filter-group">
+                    <label for="publiseringsdato">Publiseringsdato:</label>
+                    <select id="publiseringsdato" name="publiseringsdato">
+                        <option value="når_som_helst">Når som helst</option>
+                        <option value="over_2_uker">Over 2 uker siden</option>
+                        <option value="7_14_dager">7-14 dager siden</option>
+                        <option value="0_6_dager">0-6 dager siden</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="divisjon">Divisjon:</label>
+                    <select id="divisjon" name="divisjon">
+                        <option value="alle">Alle divisjoner</option>
+                        <option value="it">IT</option>
+                        <option value="innsats">Innsats</option>
+                        <option value="brukerdialog">Brukerdialog</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="type-oppgave">Type oppgave:</label>
+                    <select id="type-oppgave" name="type-oppgave">
+                        <option value="alle">Alle typer</option>
+                        <option value="prosjekt">Prosjekt</option>
+                        <option value="oppdrag">Oppdrag</option>
+                        <option value="bistand">Bistand</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="lengde-engasjement">Lengde på engasjement:</label>
+                    <select id="lengde-engasjement" name="lengde-engasjement">
+                        <option value="alle">Alle lengder</option>
+                        <option value="under_1_uke">Under 1 uke</option>
+                        <option value="1_4_uker">1 til 4 uker</option>
+                        <option value="mer_enn_1_maaned">Mer enn 1 måned</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="roller">Roller:</label>
+                    <select id="roller" name="roller">
+                        <option value="alle">Alle roller</option>
+                        <option value="analytiker">Analytiker / Data scientist</option>
+                        <option value="forretningsutvikler">Forretningsutvikler</option>
+                        <option value="prosjektleder">Prosjektleder</option>
+                        <option value="jurist">Jurist</option>
+                    </select>
+                </div>
+                <button type="button" id="apply-filters">Bruk filter</button>
+            </form>
+        </div>
+    </section>
+    
+
+
+
+    <script>
+        // Hent kollapsbare knapper
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        
+        // Legg til eventlistener for "Bruk filter"-knappen
+        document.getElementById('apply-filters').addEventListener('click', function() {
+            var form = document.getElementById('filter-form');
+            var filters = new FormData(form);
+            var filterValues = {};
+            filters.forEach(function(value, key) {
+                filterValues[key] = value;
+            });
+            console.log('Valgte filtre:', filterValues);
+            // Her kan du legge til funksjonalitet for å filtrere oppgavene basert på valgte filtre
+        });
+        </script>
+        
+
+
+
+
+</body>
+
+</html>

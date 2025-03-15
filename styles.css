@@ -1,0 +1,130 @@
+/* Generelle stiler for siden */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Lys grå bakgrunn for resten av siden */
+}
+
+/* Stil for header-seksjonen */
+header {
+    background-color: #87CEEB; /* Himmelblå bakgrunn */
+    padding: 20px;
+    text-align: left;
+}
+
+/* Stil for hovedtittelen */
+header h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #ffffff; /* Hvit tekstfarge */
+}
+
+/* Stil for beskrivelsen */
+header p {
+    font-size: 15px;
+    color: #ffffff; /* Hvit tekstfarge */
+}
+
+
+
+/* Stil for søkefeltseksjonen */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Stil for søkefeltet */
+#search {
+    width: 500px;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+/* Stil for søkeknappen */
+#search-btn {
+    background-color: #87CEEB;
+    border: 2px solid #87CEEB;
+    border-radius: 0 20px 20px 0;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Stil for søkeikonet */
+#search-icon {
+    width: 15px;
+    height: 15px;
+}
+
+
+
+
+/* Stil for filterseksjonen */
+.filter-container {
+    margin: 20px;
+}
+
+/* Stil for kollapsbar knapp */
+.collapsible {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Stil for innholdet i filterpanelet */
+.content {
+    padding: 10px;
+    display: none;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Stil for hver filtergruppe */
+.filter-group {
+    margin-bottom: 15px;
+}
+
+/* Stil for filteretiketter */
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Stil for filterelementer */
+.filter-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Stil for "Bruk filter"-knappen */
+#apply-filters {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+#apply-filters:hover {
+    background-color: #45a049;
+}
