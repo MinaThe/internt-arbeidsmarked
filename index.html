@@ -92,6 +92,24 @@
     </section>
     
 
+    <section class="sorting-container">
+        <!-- Sorteringseksjon -->
+        <div class="sorting-section">
+            <button type="button" id="sorting-btn" class="sorting-btn">Sorter etter: ...</button>
+            <div id="sorting-options" class="sorting-dropdown">
+                <ul>
+                    <li data-sort="lengde">Lengde på engasjement</li>
+                    <li data-sort="tittel">Tittel</li>
+                    <li data-sort="innmelder">Navn på innmelder</li>
+                    <li data-sort="publisert">Dato publisert</li>
+                    <li data-sort="frist">Frist</li>
+                </ul>
+            </div>
+            <button type="button" id="reverse-order" class="reverse-btn">&#8659;</button>
+        </div>
+    </section>
+    
+    
 
 
     <script>
@@ -120,55 +138,91 @@
             console.log('Valgte filtre:', filterValues);
             // Her kan du legge til funksjonalitet for å filtrere oppgavene basert på valgte filtre
         });
-        </script>
+    </script>
         
 
 
 
 
-        <script>
-            // Funksjon for å oppdatere "Avdeling" basert på valgt "Divisjon"
-            function oppdaterAvdeling() {
-                var divisjon = document.getElementById('divisjon').value;
-                var avdeling = document.getElementById('avdeling');
-                var avdelinger = {
-                    'it': ['A', 'B', 'C'],
-                    'innsats': ['D', 'E'],
-                    'brukerdialog': ['F', 'G', 'H', 'I']
-                };
+    <script>
+        // Funksjon for å oppdatere "Avdeling" basert på valgt "Divisjon"
+        function oppdaterAvdeling() {
+            var divisjon = document.getElementById('divisjon').value;
+            var avdeling = document.getElementById('avdeling');
+            var avdelinger = {
+                'it': ['A', 'B', 'C'],
+                'innsats': ['D', 'E'],
+                'brukerdialog': ['F', 'G', 'H', 'I']
+            };
             
-                // Fjern eksisterende alternativer
-                avdeling.innerHTML = '';
+            // Fjern eksisterende alternativer
+            avdeling.innerHTML = '';
             
-                // Legg til standard "Velg..." alternativ
-                var defaultOption = document.createElement('option');
-                defaultOption.value = 'alt';
-                defaultOption.textContent = 'Alle avdelinger';
-                avdeling.appendChild(defaultOption);
+            // Legg til standard "Velg..." alternativ
+            var defaultOption = document.createElement('option');
+            defaultOption.value = 'alt';
+            defaultOption.textContent = 'Alle avdelinger';
+            avdeling.appendChild(defaultOption);
             
-                // Aktiver eller deaktiver "Avdeling" basert på valg i "Divisjon"
-                if (divisjon === 'alt') {
-                    avdeling.disabled = true;
-                    defaultOption.textContent = 'Velg divisjon først...';
-                } else {
-                    avdeling.disabled = false;
-                    // Legg til nye alternativer basert på valgt divisjon
-                    avdelinger[divisjon].forEach(function(avd) {
-                        var option = document.createElement('option');
-                        option.value = avd.toLowerCase();
-                        option.textContent = avd;
-                        avdeling.appendChild(option);
-                    });
-                }
+            // Aktiver eller deaktiver "Avdeling" basert på valg i "Divisjon"
+            if (divisjon === 'alt') {
+                avdeling.disabled = true;
+                defaultOption.textContent = 'Velg divisjon først...';
+            } else {
+                avdeling.disabled = false;
+                // Legg til nye alternativer basert på valgt divisjon
+                avdelinger[divisjon].forEach(function(avd) {
+                    var option = document.createElement('option');
+                    option.value = avd.toLowerCase();
+                    option.textContent = avd;
+                    avdeling.appendChild(option);
+                });
             }
+        }
             
-            // Legg til eventlistener for endring i "Divisjon"
-            document.getElementById('divisjon').addEventListener('change', oppdaterAvdeling);
+        // Legg til eventlistener for endring i "Divisjon"
+        document.getElementById('divisjon').addEventListener('change', oppdaterAvdeling);
             
-            // Kjør funksjonen ved lasting av siden for å sette opp standardtilstand
-            document.addEventListener('DOMContentLoaded', oppdaterAvdeling);
-            </script>
+        // Kjør funksjonen ved lasting av siden for å sette opp standardtilstand
+        document.addEventListener('DOMContentLoaded', oppdaterAvdeling);
+    </script>
             
+
+
+    <script>
+        // Funksjon for å vise og skjule sorteringsalternativene
+        document.getElementById('sorting-btn').addEventListener('click', function() {
+            var sortingOptions = document.getElementById('sorting-options');
+            sortingOptions.style.display = (sortingOptions.style.display === 'block') ? 'none' : 'block';
+        });
+
+        // Funksjon for å oppdatere sorteringsknappen med valgt alternativ
+        document.querySelectorAll('#sorting-options li').forEach(function(item) {
+            item.addEventListener('click', function() {
+                var selectedOption = item.textContent;
+                document.getElementById('sorting-btn').textContent = "Sorter etter: " + selectedOption;
+                document.getElementById('sorting-options').style.display = 'none';
+
+                // Kjør sorteringsfunksjon basert på valgt alternativ
+                sortBy(item.dataset.sort);
+            });
+        });
+
+        // Funksjon for å sortere etter valgt kriterium
+        function sortBy(criteria) {
+            console.log('Sortering etter:', criteria);
+            // Legg til logikk for sortering her, f.eks. ved å sortere en liste med oppgaver
+            // Avhengig av valget (lengde, tittel, publisert osv.)
+        }
+
+        // Funksjon for å reversere rekkefølgen
+        document.getElementById('reverse-order').addEventListener('click', function() {
+            console.log('Reverserer rekkefølge');
+            // Legg til logikk for å reversere sorteringen
+        });
+    </script>
+
+
 
 
 

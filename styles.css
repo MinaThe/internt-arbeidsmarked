@@ -72,7 +72,7 @@ header p {
 
 /* Stil for kollapsbar knapp */
 .collapsible {
-    background-color: #7dc1de;
+    background-color: #252525;
     color: white;
     padding: 10px;
     width: 100%;
@@ -144,4 +144,74 @@ header p {
 /* Fjern høyre marg for siste element i duo-filters */
 .duo-filters .half-width:last-child {
     margin-right: 0;
+}
+
+
+
+
+
+
+/* Stil for sorteringseksjonen */
+.sorting-container {
+    margin: 20px;
+}
+
+/* Stil for sorteringknappen */
+.sorting-btn {
+    background-color: #252525;
+    color: white;
+    padding: 10px;
+    width: auto;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Stil for sorterings-popup (skjult som standard) */
+.sorting-dropdown {
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+}
+
+.sorting-dropdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sorting-dropdown li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sorting-dropdown li:hover {
+    background-color: #ddd;
+}
+
+/* Stil for reverseringsknappen */
+.reverse-btn {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 50%;
+}
+
+/* Justering av reverseringsknappen */
+.reverse-btn:hover {
+    background-color: #ddd;
+}
+
+.reverse-btn:focus {
+    outline: none;
 }
