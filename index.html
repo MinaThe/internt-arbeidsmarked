@@ -92,7 +92,7 @@
                 <ul>
                     <li data-sort="lengde">Lengde på engasjement</li>
                     <li data-sort="tittel">Tittel</li>
-                    <li data-sort="innmelder">Navn på innmelder</li>
+                    <li data-sort="innmelder">Navn på kontaktperson</li>
                     <li data-sort="publisert">Dato publisert</li>
                     <li data-sort="frist">Frist</li>
                 </ul>
@@ -100,9 +100,58 @@
 
             <button type="button" id="reverse-order" class="reverse-btn">&#8659;</button>
             
-            <button type="button" id="icon-btn" class="new-post-btn">
+            <button type="button" id="new-post-container" class="new-post-btn">
                 <img src="images/new_post_black.png" alt="Ikon" class="icon-img">
             </button>
+
+
+        <!-- Popup-boksen -->
+        <div id="popup" class="popup-container">
+            <div class="popup-content">
+                <span id="close-popup" class="close-btn">X</span>
+                <h3>Publiser et nytt oppdrag</h3>
+                <form id="post-form">
+                    <input type="text" placeholder="Tittel på oppdrag" class="form-input" />
+                    <input type="text" placeholder="Kontaktpersons Navn/Email" class="form-input" />
+                    
+                    <div class="form-group">
+                        <select class="form-input">
+                            <option>Divisjon ...</option>
+                            <option>IT</option>
+                            <option>Innsats</option>
+                            <option>Brukerdialog</option>
+                        </select>
+                        <select class="form-input">
+                            <option>Avdeling ...</option>
+                            <option>IS-Forbedring</option>
+                            <option>IS-Skattekrim</option>
+                        </select>
+                    </div>
+
+                    <textarea placeholder="Kort beskrivelse av oppdraget" class="form-input"></textarea>
+                    
+                    <h5>Ønskede roller</h5>
+                    <div class="form-group">
+                        <select class="form-input">
+                            <option>Velg rolle ...</option>
+                            <option>Analytiker / Data scientist</option>
+                            <option>Forretningsutvikler</option>
+                            <option>Prosjektleder</option>
+                            <option>Jurist</option>
+                        </select>
+                    </div>
+
+                    <h5>Lengde på engasjement</h5>
+                    <input type="number" placeholder="Antall dager" class="form-input" />
+
+                    <h5>Frist for å melde interesse</h5>
+                    <input type="date" value=const d = new Date()/>
+
+                    <button type="button" class="publish-btn">Publiser oppdrag</button>
+                </form>
+            </div>
+        </div>
+
 
         </div>
     </section>
@@ -221,7 +270,73 @@
     </script>
 
 
+    <script>
+        // Hent elementene
+        const newPostBtn = document.getElementById('new-post-container');
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('close-popup');
+        
+        // Åpne pop-up når knappen trykkes
+        newPostBtn.addEventListener('click', function() {
+            popup.style.display = 'flex'; // Vis popup-boksen
+        });
+        
+        // Lukk pop-up når X-knappen trykkes
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none'; // Skjul popup-boksen
+        });
+        
+        // Hvis brukeren klikker utenfor popup-boksen, lukk den
+        window.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+    
 
+    <script>
+        // Hent popup-boksen, publiser-knappen og div for publiserte oppdrag
+        const publishBtn = document.getElementById('publish-btn');
+        const publishedContainer = document.getElementById('published-container');
+
+        // Funksjon for å vise oppdrag
+        publishBtn.addEventListener('click', function() {
+            // Hent data fra skjemaet
+            const tittel = document.getElementById('oppdrag-tittel').value;
+            const beskrivelse = document.getElementById('oppdrag-beskrivelse').value;
+            const divisjon = document.getElementById('oppdrag-divisjon').value;
+            const avdeling = document.getElementById('oppdrag-avdeling').value;
+            const antallDager = document.getElementById('oppdrag-antall-dager').value;
+            const frist = document.getElementById('oppdrag-frist').value;
+
+            // Lag en boks for oppdraget
+            const oppdragBox = document.createElement('div');
+            oppdragBox.classList.add('published-box');
+            
+            oppdragBox.innerHTML = `
+                <h4>${tittel}</h4>
+                <p><strong>Beskrivelse:</strong> ${beskrivelse}</p>
+                <p><strong>Divisjon:</strong> ${divisjon}</p>
+                <p><strong>Avdeling:</strong> ${avdeling}</p>
+                <p><strong>Antall dager:</strong> ${antallDager}</p>
+                <p><strong>Frist:</strong> ${frist}</p>
+                <span class="close-btn">X</span>
+            `;
+            
+            // Legg til boks i publiserte container
+            publishedContainer.appendChild(oppdragBox);
+
+            // Legg til eventlistener for å lukke boks når brukeren klikker på X
+            oppdragBox.querySelector('.close-btn').addEventListener('click', function() {
+                oppdragBox.remove();
+            });
+
+            // Lukk popup-boksen
+            document.getElementById('popup').style.display = 'none';
+        });
+
+    </script>
 
 
 </body>

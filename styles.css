@@ -255,3 +255,104 @@ header p {
     height: 100%;
     object-fit: contain; /* Sørg for at ikonet beholder sitt forhold */
 }
+
+
+
+
+
+
+
+/* Pop-up bakgrunn */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Halvtransparent bakgrunn */
+    z-index: 1000; /* Sørg for at pop-up vises over alt annet */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pop-up innhold */
+.popup-content {
+    background-color: white;
+    width: 90%;
+    height: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Lukk-knappen */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+/* Form input felt */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Form gruppe for divisjon og avdeling */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Stil for "Publiser oppdrag"-knappen */
+.publish-btn {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.publish-btn:hover {
+    background-color: darkgreen;
+}
+
+
+
+
+
+/* DENNE KODEN NEDENFOR ER IKKE IMPLEMENTERT ENDA */
+
+/* Stil for publiserte oppdrag */
+.published-box {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+/* Stil for rød X knapp i publisert boks */
+.published-box .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
