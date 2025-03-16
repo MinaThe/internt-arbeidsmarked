@@ -59,15 +59,6 @@
                 <!-- Slutt -->
 
                 <div class="filter-group">
-                    <label for="type-oppgave">Type oppgave:</label>
-                    <select id="type-oppgave" name="type-oppgave">
-                        <option value="alle">Alle typer</option>
-                        <option value="prosjekt">Prosjekt</option>
-                        <option value="oppdrag">Oppdrag</option>
-                        <option value="bistand">Bistand</option>
-                    </select>
-                </div>
-                <div class="filter-group">
                     <label for="lengde-engasjement">Lengde på engasjement:</label>
                     <select id="lengde-engasjement" name="lengde-engasjement">
                         <option value="alle">Alle lengder</option>
@@ -93,6 +84,7 @@
     
 
     <section class="sorting-container">
+
         <!-- Sorteringseksjon -->
         <div class="sorting-section">
             <button type="button" id="sorting-btn" class="sorting-btn">Sorter etter: ...</button>
@@ -105,7 +97,13 @@
                     <li data-sort="frist">Frist</li>
                 </ul>
             </div>
+
             <button type="button" id="reverse-order" class="reverse-btn">&#8659;</button>
+            
+            <button type="button" id="icon-btn" class="new-post-btn">
+                <img src="images/new_post_black.png" alt="Ikon" class="icon-img">
+            </button>
+
         </div>
     </section>
     
